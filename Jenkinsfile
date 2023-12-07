@@ -1,24 +1,37 @@
-pipeline {
-    agent any
+pipeline{
+    agent any 
     
     stages {
-        stage('Checkout from GitHub') {
+        stage ('Build'){
             steps {
-                // Clean workspace and checkout code from GitHub repository
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/ahmedmota/Digital-Resume.git']]])
+                echo "Building stage"
             }
         }
-
-        stage('Deploy to Nginx') {
+        stage ('Test'){
             steps {
-                script {
-                    // SSH to Nginx server and copy files to the appropriate directory
+                echo "Testing stage"
+
+            }
+        }
+        stage ('Deploy to nginx'){ 
+            steps{ 
+                echo "Deploying" 
+                 // SSH to Nginx server and copy files to the appropriate directory
                     sshagent(['nginx-ssh']) {
                         sh "scp -r /var/www/html/* ubuntu@18.234.215.10:/var/www/html/"
-                    }
-                }
-            }
+
+					}
+            } 
+        }
+
+    }
+
+    post{
+        success {
+            echo "success"
+        }
+        failure {
+            echo "failure"
         }
     }
 }
