@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Deploy') {
             steps {
-                sshagent(['nginx-ssh']) {
+                sshagent(['nginx-ssh-1']) {
                     sh """
                     # Copy files to Nginx document root
                     scp -r * ubuntu@54.198.78.19:/var/www/html
