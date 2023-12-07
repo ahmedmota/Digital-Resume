@@ -1,33 +1,35 @@
-pipeline {
+pipeline{
     agent any 
     
     stages {
-        stage ('Build') {
+        stage ('Build'){
             steps {
                 echo "Building stage"
             }
         }
-        stage ('Test') {
+        stage ('Test'){
             steps {
                 echo "Testing stage"
+
             }
         }
-        stage ('Deploy to nginx') { 
-            steps { 
-                echo "Deploying" 
-                script {
-                    // Use AWS CLI over SSH to copy files to the Nginx server
-                    sshagent(['nginx-ssh']) {
-                        sh '''
-                            scp -r /var/www/html/* ubuntu@18.234.215.10:/var/www/html/
-                        '''
-                    }
+        stage('Deploy') {
+            steps {
+                sshagent(['nginx-ssh']) {
+                    sh """
+                    # Copy files to Nginx document root
+                    scp -r * ubuntu@18.234.215.10:/var/www/html
+
+                    # Connect to server and reload Nginx
+                    ssh -t ubuntu@18.234.215.10 service nginx reload
+                    """
                 }
-            } 
+            }
         }
+
     }
 
-    post {
+    post{
         success {
             echo "success"
         }
