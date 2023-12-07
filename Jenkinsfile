@@ -18,10 +18,10 @@ pipeline{
                 sshagent(['nginx-ssh']) {
                     sh """
                     # Copy files to Nginx document root
-                    scp -r * ubuntu@35.172.186.180:/var/www/html
+                    scp -r * ubuntu@54.198.78.19:/var/www/html
 
                     # Connect to server and reload Nginx
-                    ssh -t ubuntu@35.172.186.180 service nginx reload
+                    ssh -t ubuntu@54.198.78.19 service nginx reload
                     """
                 }
             }
