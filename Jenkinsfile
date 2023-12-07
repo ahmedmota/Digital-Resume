@@ -16,7 +16,7 @@ pipeline{
         stage('Deploy') {
     steps {
         script {
-            sh 'ssh-keygen -R 35.172.186.180'
+            ssh-keygen -R 35.172.186.180 -f /var/lib/jenkins/.ssh/known_hosts
             sshagent(['nginx-ssh']) {
                 sh """
                 # Copy files to Nginx document root
