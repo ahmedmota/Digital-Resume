@@ -14,18 +14,22 @@ pipeline{
             }
         }
         stage('Deploy') {
-            steps {
-                sshagent(['nginx-ssh']) {
-                    sh """
-                    # Copy files to Nginx document root
-                    scp -r * ubuntu@35.172.186.180:/var/www/html
+    steps {
+        script {
+            sh 'ssh-keygen -R 35.172.186.180'
+            sshagent(['nginx-ssh']) {
+                sh """
+                # Copy files to Nginx document root
+                scp -r * ubuntu@35.172.186.180:/var/www/html
 
-                    # Connect to server and reload Nginx
-                    ssh -t ubuntu@35.172.186.180 service nginx reload
-                    """
-                }
+                # Connect to server and reload Nginx
+                ssh -t ubuntu@35.172.186.180 service nginx reload
+                """
             }
         }
+    }
+}
+
 
     }
 
