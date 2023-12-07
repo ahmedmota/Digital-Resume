@@ -18,7 +18,7 @@ pipeline{
                 echo "Deploying" 
                  // SSH to Nginx server and copy files to the appropriate directory
                     sshagent(['nginx-ssh']) {
-                        sh "scp -r /var/www/html/* ubuntu@18.234.215.10:/var/www/html/"
+                        sh "scp -r /index.html ubuntu@18.234.215.10:/var/www/html/"
 
 					}
             } 
