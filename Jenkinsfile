@@ -14,18 +14,18 @@ pipeline{
             }
         }
         stage('Deploy') {
-            steps {
-                sshagent(['nginx-ssh-1']) {
-                    sh """
-                    # Copy files to Nginx document root
-                    scp -r * ubuntu@54.144.66.178:/var/www/html
+    steps {
+        script {
+            sshagent(['nginx-ssh']) {
+               // Copy files to the remote server (scp)
+                        sh 'scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/known_hosts -r * ubuntu@54.85.198.104:/var/www/html'
 
-                    # Connect to server and reload Nginx
-                    ssh -t ubuntu@54.144.66.178 service nginx reload
-                    """
-                }
+                        // Connect to server and reload Nginx (ssh)
+                        sh 'ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/known_hosts -t ubuntu@54.85.198.104 service nginx reload'
             }
         }
+    }
+}
 
     }
 
