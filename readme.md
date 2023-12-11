@@ -1,3 +1,6 @@
+#pipeline script for deploy code to remote server
+sh 'scp -i /var/lib/jenkins/.ssh/known_hosts index.html ubuntu@54.167.193.182:/var/www/html/'
+
 # Dennis Ivy Digital Resume
 
 A digital resume website built based on the content from my personal REAL [resume](./assets/resume.pdf) 
