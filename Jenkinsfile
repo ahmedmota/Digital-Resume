@@ -19,7 +19,7 @@ pipeline{
         stage ('Deploy to S3'){ 
             steps{ 
                 echo "Deploying" 
- sh '/root/.aws/ s3 sync ./ s3://ahmedresume.online --exclude "*" --include "index.html"'
+             sh '/root/.aws/s3 sync ./ s3://ahmedresume.online --exclude "*" --include "index.html"'
 
             } 
         }
