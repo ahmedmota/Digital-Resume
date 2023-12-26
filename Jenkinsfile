@@ -20,8 +20,7 @@ pipeline{
             steps{ 
                 echo "Deploying" 
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws']]) {
-                    sh 'aws s3 sync ./ s3://ahmedresume.online --exclude "*" --include "index.html" --include "styles.css" --include "script.js" --include "ahmed.jpg"'
-            } 
+                sh 'aws s3 sync ./ s3://ahmedresume.online'            } 
             }     
         }
 
