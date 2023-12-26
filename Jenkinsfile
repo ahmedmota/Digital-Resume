@@ -1,6 +1,9 @@
 pipeline{
     agent any 
-    
+    environment {
+    AWS_DEFAULT_REGION = "us-east-1"
+    THE_BUTLER_SAYS_SO = credentials('aws')
+    }
     stages {
         stage ('Build'){
             steps {
@@ -13,19 +16,14 @@ pipeline{
 
             }
         }
-        stage('Deploy') {
-    steps {
-        script {
-            sshagent(['nginx-ssh']) {
-               // Copy files to the remote server (scp)
-                        sh 'sudo scp -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/known_hosts -r * ubuntu@54.85.198.104:/var/www/html'
+        stage ('Deploy to S3'){ 
+            steps{ 
+                echo "Deploying" 
+                sh '/usr/bin/aws s3 sync ./ s3://ahmedresume.online --exclude "*" --include "*"'
 
-                        // Connect to server and reload Nginx (ssh)
-                        sh 'ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/known_hosts -t ubuntu@54.85.198.104 service nginx reload'
-            }
+
+            } 
         }
-    }
-}
 
     }
 

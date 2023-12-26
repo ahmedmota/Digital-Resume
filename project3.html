@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ahmed Abdul Hamid</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles/main.css">
+    </head>
+    <body>
+        <div id="container--main">
+            <a href="index.html">&#x2190; Go Back</a>
+            <h1>Implementing a CI/CD Pipeline for a React Application using Jenkins and Docker on Ubuntu EC2 Instances</h1>
+
+            <ul>
+                <li><a href="https://github.com/ahmedmota/ci-cd-react-app-docker-container.git" target="_blank">Source code</a></li>
+            </ul>
+            <h2>Project Overview:</h2>
+            
+            <p>The project involves setting up a Continuous Integration/Continuous Deployment (CI/CD) pipeline for a React application using Jenkins and Docker. The infrastructure includes two Ubuntu EC2 instances, one hosting the Jenkins server and the other hosting Docker.</p>
+
+            <h2>Jenkins Server Setup</h2>
+            
+             <p>The first step involves setting up the Jenkins server on one of the EC2 instances. This includes installing Jenkins and necessary plugins like the Git plugin and Docker plugin. Jenkins is used to automate the parts of software development related to building, testing, and deploying, facilitating continuous integration and continuous delivery.</p>
+
+           
+            <h2>Docker Server Setup:</h2>
+            
+                <p>The second EC2 instance is set up with Docker. Docker is a platform used to develop, ship, and run applications inside containers. It provides a way to package applications with their dependencies into a standardized unit for software development.</p>
+
+            <h2>React Application and Docker:</h2>
+            
+                <p>The React application is created using the npx create-react-app command. A Dockerfile is created for the React app, which contains instructions to build a Docker image of the app. The Docker image includes everything needed to run the application, including the code, runtime, libraries, and system tools.</p>
+            
+                <h2>Jenkins Pipeline:</h2>
+            
+                <p>A Jenkinsfile is created to define the Jenkins pipeline. The pipeline checks out the code, builds the Docker image, and deploys it. The Jenkinsfile uses the Docker Hub credentials stored in Jenkins to log in to Docker Hub, push the Docker image, and then pull the image on the Docker server and run it.</p>
+            
+            <h2>Conclusion:</h2>
+            
+                <p>This project demonstrates the power of CI/CD pipelines in automating the software development process, making it more consistent and efficient. It also highlights the use of Docker in creating a consistent environment for the application, from development to production. The use of Jenkins allows for the automation of various stages in the development lifecycle, including building, testing, and deployment. Overall, this project serves as a practical example of implementing DevOps practices. 🚀</p>
+            
+        </div>
+    </body>
+</html>

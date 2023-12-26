@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ahmed Abdul Hamid</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles/main.css">
+    </head>
+    <body>
+        <div id="container--main">
+            <a href="index.html">&#x2190; Go Back</a>
+            <h1>Hosting a React Application on an Nginx Server in a Docker Container</h1>
+
+            <ul>
+                <li><a href="https://github.com/ahmedmota/React-Application-on-an-Nginx-Server-in-a-Docker-Container.git" target="_blank">Source Code</a></li>
+            </ul>
+            <h2>Overview:</h2>
+            
+            <p>React is a leading library for building user interfaces. Deploying a React application is a crucial aspect of web development. Docker and Nginx provide a popular solution for this deployment.</p>
+
+            <h2>Why Docker and Nginx?</h2>
+            
+             <p><b>Docker:</b> An open-source platform that automates the deployment, scaling, and management of applications. It packages an application and its environment into a container.
+                <br><b>Nginx:</b> A high-performance web server used as a reverse proxy, load balancer, and HTTP cache.</p>
+                <br>
+                Combining Docker and Nginx creates a portable and scalable deployment solution for React applications.
+
+           
+            <h3>Stage 1: Create a Dockerfile</h3>
+            
+                <p>The Dockerfile contains instructions to build a Docker image of the React application. It involves two stages:
+                    <ul>
+                        <li>
+                            Building the React application
+                        </li>
+                        <li>Serving it from Nginx</li>
+                    </ul>
+                </p>
+
+            <h3>Stage 2: Build the Docker Image:</h3>
+            
+                <p>Use the Docker build command to create a new Docker image from the Dockerfile.</p>
+            
+                <h3>Stage 3: Run the Docker Container:</h3>
+            
+                <p>Use the Docker run command to create a new Docker container from the image. The Nginx server inside the container serves the React application on port 80.</p>
+            
+            <h2>Conclusion:</h2>
+            
+                <p>By following these steps, a React application can be efficiently hosted on an Nginx server inside a Docker container. This ensures a smooth deployment process and provides the benefits of containerization such as improved scalability and easier management.</p>
+            
+        </div>
+    </body>
+</html>
